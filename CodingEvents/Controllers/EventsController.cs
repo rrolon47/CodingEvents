@@ -8,7 +8,7 @@ namespace CodingEvents.Controllers
 {
     public class EventsController : Controller
     {
-        static private List<string> Events = new List<string>();
+        static private Dictionary<string, string> Events = new Dictionary<string, string>();
 
         //Get: /events
         [HttpGet]
@@ -18,8 +18,10 @@ namespace CodingEvents.Controllers
             //Events.Add("Women in Tech Kansas City Event");
             //Events.Add("GodSpeed! You Black Emperor Concert"); 
             //Events.Add("League of Legends Virtual");
+            
 
             ViewBag.events = Events;
+
             return View();
         }
 
@@ -35,9 +37,9 @@ namespace CodingEvents.Controllers
         //handles the form submission
         [HttpPost]
         [Route("/events/add")]
-        public IActionResult NewEvent(string name)
+        public IActionResult NewEvent(string name, string description)
         {
-            Events.Add(name);
+            Events.Add(name, description);
 
             return Redirect("/Events");
         }

@@ -7,11 +7,21 @@
 {
     <p>No events to display.</p>
 }
+else 
+{ 
 
-<ul>
-    @foreach (string meeting in ViewBag.events)
-    {
-        <li>@meeting</li>
-    }
+    <table>
+        <tr>
+            <th>Event Name</th>
+            <th>Description</th>
+        </tr>
+        @foreach (KeyValuePair<string, string> meeting in ViewBag.Events)
+         {
+            <tr>
+                <td>@meeting.Key</td>
+                <td>@meeting.Value</td>
+            </tr> 
+         }
+    </table>
 
-</ul>
+}
