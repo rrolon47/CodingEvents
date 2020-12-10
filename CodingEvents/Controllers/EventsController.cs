@@ -10,7 +10,7 @@ namespace CodingEvents.Controllers
     {
         static private List<string> Events = new List<string>();
 
-        //Get: /Events
+        //Get: /events
         [HttpGet]
         [Route("/events")]
         public IActionResult Index()
@@ -20,6 +20,14 @@ namespace CodingEvents.Controllers
             Events.Add("League of Legends Virtual");
 
             ViewBag.events = Events;
+            return View();
+        }
+
+        //Get: /events/add
+        [HttpGet]
+        [Route("/events/add")]
+        public IActionResult Add()
+        {
             return View();
         }
     }
