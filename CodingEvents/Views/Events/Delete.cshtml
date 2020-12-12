@@ -1,0 +1,40 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Delete Event</h1>
+
+@if (ViewBag.events.Count == 0)
+{
+    <p>No events to delete.</p>
+}
+else
+{
+    <form method="post">
+        <table class="table">
+            <tr>
+                <th>Delete</th>
+                <th>Event Name</th>
+            </tr>
+            @foreach (var meeting in ViewBag.events)
+            {
+                <tr>
+                    <td>
+                        <input type="checkbox" name="eventIds" value="@meeting.Id" />
+                    </td>
+                    <td>
+                        @meeting.Name
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td>
+                    <input type="submit" value="Delete Selected Events" class="btn btn-danger" />
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </form>
+}
