@@ -16,8 +16,8 @@ namespace CodingEvents.Controllers
         [Route("/Events")]
         public IActionResult Index()
         {
-            ViewBag.events = EventData.GetAll();
-            return View();
+            List<Event> events = new List<Event>(EventData.GetAll());
+            return View(events);
         }
 
         //Get: /events/add
