@@ -59,7 +59,7 @@ namespace CodingEvents.Controllers
 
         //get: events/edit/eventId
         [HttpGet]
-        [Route("/Events/Edit/{eventId?}")]
+        [Route("/Events/Edit/{eventId}")]
         public IActionResult Edit(int eventId)
         {
             Event eventById = EventData.GetById(eventId);
