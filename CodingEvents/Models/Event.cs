@@ -12,18 +12,33 @@ namespace CodingEvents.Models
         public int Id { get;}
         private static int nextId = 0;
 
-        public Event(string name, string description)
+        public Event()
+        {
+            Id = nextId;
+            nextId++;
+        }
+
+        public Event(string name, string description) : this()
         {
             Name = name;
             Description = description;
-            Id = nextId;
-            nextId++;
-
         }
 
         public override string ToString()
         {
             return Name;
         }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Event @event &&
+                   Id == @event.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id);
+        }
+
     }
 }
