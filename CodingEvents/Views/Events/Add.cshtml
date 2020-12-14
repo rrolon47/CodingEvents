@@ -4,18 +4,17 @@
 <h1>Add Event</h1>
 
 <form method="post" asp-controller="Events" asp-action="Add">
-    <label asp-for="Name">Event Name:</label>
-    <input asp-for="Name" />
+        <label asp-for="Name"> Event Name:</label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
     <br />
-    <label asp-for="Description">
-        Event Description:
+        <label asp-for="Description">Event Description:</label>
         <input asp-for="Description" />
-    </label>
+        <span asp-validation-for="Description"></span>
     <br />
-    <label asp-for="ContactEmail">
-        Contact Email:
+        <label asp-for="ContactEmail">Contact Email:</label>
         <input asp-for="ContactEmail" />
-    </label>
+        <span asp-validation-for="ContactEmail"></span>
     <br />
-    <input type="submit" value="Add Event" />
+        <input type="submit" value="Add Event" />
 </form>
