@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CodingEvents.Data;
 using CodingEvents.Models;
+using CodingEvents.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CodingEvents.Controllers
@@ -25,16 +26,20 @@ namespace CodingEvents.Controllers
         [Route("/Events/Add")]
         public IActionResult Add()
         {
-            return View();
+            AddEventViewModel addEventViewModel = new AddEventViewModel();
+
+            return View(addEventViewModel);
         }
 
         //post: /events/add
         //handles the form submission
         [HttpPost]
         [Route("/Events/Add")]
-        public IActionResult NewEvent(Event newEvent)
+        public IActionResult Add(AddEventViewModel addEventViewModel)
         {
+            Event newEvent = new Event(addEventViewModel.Name, addEventViewModel.Description);
             EventData.Add(newEvent);
+
             return Redirect("/Events");
         }
 
