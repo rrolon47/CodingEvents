@@ -37,16 +37,21 @@ namespace CodingEvents.Controllers
         [Route("/Events/Add")]
         public IActionResult Add(AddEventViewModel addEventViewModel)
         {
-            Event newEvent = new Event
-            {
-                Name= addEventViewModel.Name,
-                Description= addEventViewModel.Description,
-                ContactEmail= addEventViewModel.ContactEmail
-            };
+            if (ModelState.IsValid) 
+            {  
+                Event newEvent = new Event
+                {
+                    Name= addEventViewModel.Name,
+                    Description= addEventViewModel.Description,
+                    ContactEmail= addEventViewModel.ContactEmail
+                };
+                EventData.Add(newEvent);
 
-            EventData.Add(newEvent);
+                return Redirect("/Events");
+            }
 
-            return Redirect("/Events");
+            return View(addEventViewModel);
+           
         }
 
         //get: events/delete
