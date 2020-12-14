@@ -5,11 +5,16 @@
 
 <form method="post" asp-controller="Events" asp-action="Add">
     <label asp-for="Name">Event Name:</label>
-    <input asp-for="Name"/>
+    <input asp-for="Name" />
     <br />
-    <label asp-for="Description">@*using label in a different way that works the same*@
+    <label asp-for="Description">
         Event Description:
-        <input asp-for="Description"/>
+        <input asp-for="Description" />
+    </label>
+    <br />
+    <label asp-for="ContactEmail">
+        Contact Email:
+        <input asp-for="ContactEmail" />
     </label>
     <br />
     <input type="submit" value="Add Event" />

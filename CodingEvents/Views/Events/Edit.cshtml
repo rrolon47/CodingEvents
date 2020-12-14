@@ -1,15 +1,23 @@
-﻿<h1>@ViewBag.title</h1>
+﻿@using CodingEvents.ViewModel
+
+@model AddEventViewModel
+
+<h1>@ViewBag.title</h1>
 
 <form method="post" action="/Events/Edit">
-    <label for="name">Event Name:</label>
-    <input name="Name" value="@ViewBag.editEvent.Name" id="name" type="text" />
+    <label asp-for="Name">Event Name:</label>
+    <input asp-for="Name" value="@ViewBag.editEvent.Name"  />
     <br />
-    <label>
+    <label asp-for="Description">
         @*using label in a different way that works the same*@
         Event Description:
-        <input name="Description" value="@ViewBag.editEvent.Description"  id="description" type="text" />
+        <input asp-for="Description" value="@ViewBag.editEvent.Description" />
     </label>
     <br />
+    <label asp-for="ContactEmail">
+            Contact Email:
+            <input asp-for="ContactEmail" value="@ViewBag.editEvent.ContactEmail" />
+    </label>
     <input type="hidden" value="@ViewBag.editEvent.Id" name="eventId" />
     <input type="submit" value="Edit Event" />
 </form>

@@ -21,6 +21,7 @@ else
             <th>ID</th>
             <th>Event Name</th>
             <th>Description</th>
+            <th>Contact Email</th>
             <th>Edit</th>
         </tr>
         @foreach (Event meeting in Model)
@@ -29,6 +30,7 @@ else
         <td>@meeting.Id</td>
         <td>@meeting.Name</td>
         <td>@meeting.Description</td>
+        <td>@meeting.ContactEmail</td>
         <td><a asp-controller="Events" asp-action="Edit" asp-route-id="@meeting.Id">Edit Event</a></td>
     </tr> 
          }

@@ -37,7 +37,13 @@ namespace CodingEvents.Controllers
         [Route("/Events/Add")]
         public IActionResult Add(AddEventViewModel addEventViewModel)
         {
-            Event newEvent = new Event(addEventViewModel.Name, addEventViewModel.Description);
+            Event newEvent = new Event
+            {
+                Name= addEventViewModel.Name,
+                Description= addEventViewModel.Description,
+                ContactEmail= addEventViewModel.ContactEmail
+            };
+
             EventData.Add(newEvent);
 
             return Redirect("/Events");
@@ -67,20 +73,22 @@ namespace CodingEvents.Controllers
         [Route("/Events/Edit/{eventId}")]
         public IActionResult Edit(int eventId)
         {
+            AddEventViewModel addEventViewModel = new AddEventViewModel();
             Event eventById = EventData.GetById(eventId);
             ViewBag.editEvent = eventById;
             ViewBag.title = $"Edit Event {eventById.Name}  (id={eventById.Id})";
-            return View();
+            return View(addEventViewModel);
         }
 
         //post: events/edit
         [HttpPost]
         [Route("/Events/Edit")]
-        public IActionResult SubmitEditEventForm(int eventId, string name, string description)
+        public IActionResult SubmitEditEventForm(int eventId, AddEventViewModel addEventViewModel)
         {
             Event eventById = EventData.GetById(eventId);
-            eventById.Name = name;
-            eventById.Description = description;
+            eventById.Name = addEventViewModel.Name;
+            eventById.Description = addEventViewModel.Description;
+            eventById.ContactEmail = addEventViewModel.ContactEmail;
             return Redirect("/Events");
 
         }
