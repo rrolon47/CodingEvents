@@ -6,7 +6,7 @@
 
 <form method="post" action="/Events/Edit">
     <label asp-for="Name">Event Name:</label>
-    <input asp-for="Name" value="@ViewBag.editEvent.Name"  />
+    <input asp-for="Name" value="@ViewBag.editEvent.Name" />
     <br />
     <label asp-for="Description">
         @*using label in a different way that works the same*@
@@ -15,9 +15,13 @@
     </label>
     <br />
     <label asp-for="ContactEmail">
-            Contact Email:
-            <input asp-for="ContactEmail" value="@ViewBag.editEvent.ContactEmail" />
+        Contact Email:
+        <input asp-for="ContactEmail" value="@ViewBag.editEvent.ContactEmail" />
     </label>
+    <br />
+        <label asp-for="Type">Type of Event:</label>
+        <select asp-for="Type" asp-items="Model.EventTypes"></select>
+    <br />
     <input type="hidden" value="@ViewBag.editEvent.Id" name="eventId" />
     <input type="submit" value="Edit Event" />
 </form>

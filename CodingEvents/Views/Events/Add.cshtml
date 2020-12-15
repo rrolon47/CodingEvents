@@ -16,5 +16,8 @@
         <input asp-for="ContactEmail" />
         <span asp-validation-for="ContactEmail"></span>
     <br />
+        <label asp-for="Type">Type of Event:</label>
+        <select asp-for="Type" asp-items="Model.EventTypes"></select>
+    <br />
         <input type="submit" value="Add Event" />
 </form>
